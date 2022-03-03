@@ -54,22 +54,22 @@ func main() {
 					log.Print(err)
 				  }
 				}else if message.Text=="plug1on"{
-					mqtt_main("led2","led2/");
+					mqtt_main("1","led2/");
 					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("ปิดไฟเรียบร้อย")).Do(); err != nil {
 						log.Print(err)
 					}
 				}else if message.Text=="plug1off"{
-					mqtt_main("relay1_on","led2/");
+					mqtt_main("0","led2/");
 					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("เปิดไฟเรียบร้อย")).Do(); err != nil {
 						log.Print(err)
 					}
 				}else if message.Text=="plug2on"{
-					mqtt_main("relay1_on","led3/");
+					mqtt_main("1","led3/");
 					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("เปิดไฟเรียบร้อย")).Do(); err != nil {
 						log.Print(err)
 					}
 				}else if message.Text=="plug2off"{
-					mqtt_main("relay1_on","led3/");
+					mqtt_main("0","led3/");
 					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("เปิดไฟเรียบร้อย")).Do(); err != nil {
 						log.Print(err)
 					}
