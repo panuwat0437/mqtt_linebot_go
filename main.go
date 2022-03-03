@@ -53,13 +53,23 @@ func main() {
 				  if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.Text)).Do(); err != nil {
 					log.Print(err)
 				  }
-				}else if message.Text=="ปิดไฟ"{
-					mqtt_main("relay1_off");
+				}else if message.Text=="plug1on"{
+					mqtt_main("led2","led2/");
 					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("ปิดไฟเรียบร้อย")).Do(); err != nil {
 						log.Print(err)
 					}
-				}else if message.Text=="เปิดไฟ"{
-					mqtt_main("relay1_on");
+				}else if message.Text=="plug1off"{
+					mqtt_main("relay1_on","led2/");
+					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("เปิดไฟเรียบร้อย")).Do(); err != nil {
+						log.Print(err)
+					}
+				}else if message.Text=="plug2on"{
+					mqtt_main("relay1_on","led3/");
+					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("เปิดไฟเรียบร้อย")).Do(); err != nil {
+						log.Print(err)
+					}
+				}else if message.Text=="plug2off"{
+					mqtt_main("relay1_on","led3/");
 					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("เปิดไฟเรียบร้อย")).Do(); err != nil {
 						log.Print(err)
 					}
@@ -79,7 +89,7 @@ func main() {
 }
 
 
-func mqtt_main(msg_line string){
+func mqtt_main(msg_line string,topic_line string){
 	var broker = "soldier.cloudmqtt.com"
     var port = 10174
     opts := mqtt.NewClientOptions()
@@ -95,13 +105,13 @@ func mqtt_main(msg_line string){
         panic(token.Error())
     }
     sub(client)
-    publish(client,msg_line)
+    publish(client,msg_line,topic_line)
 
     client.Disconnect(250)
 }
 
-func publish(client mqtt.Client,msg string) {
-        token := client.Publish("/ESP/LED", 0, false, msg)
+func publish(client mqtt.Client,msg string,topic_line string) {
+        token := client.Publish(topic_line, 0, false, msg)
         token.Wait()
         time.Sleep(time.Second)
 }
