@@ -63,6 +63,10 @@ func main() {
 					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("เปิดไฟเรียบร้อย")).Do(); err != nil {
 						log.Print(err)
 					}
+				}else{
+					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("sssss")).Do(); err != nil {
+						log.Print(err)
+					}
 				}
 			  
 			}
