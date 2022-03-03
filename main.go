@@ -55,26 +55,26 @@ func main() {
 				  }
 				}else if message.Text=="plug1on"{
 					mqtt_main("1","led2/");
-					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("ปิดไฟเรียบร้อย")).Do(); err != nil {
+					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("ปลั๊ก 1 ทำงานแล้ว")).Do(); err != nil {
 						log.Print(err)
 					}
 				}else if message.Text=="plug1off"{
 					mqtt_main("0","led2/");
-					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("เปิดไฟเรียบร้อย")).Do(); err != nil {
+					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("ปลั๊ก 1 หยุดทำงานแล้ว")).Do(); err != nil {
 						log.Print(err)
 					}
 				}else if message.Text=="plug2on"{
 					mqtt_main("1","led3/");
-					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("เปิดไฟเรียบร้อย")).Do(); err != nil {
+					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("ปลั๊ก 2 ทำงานแล้ว")).Do(); err != nil {
 						log.Print(err)
 					}
 				}else if message.Text=="plug2off"{
 					mqtt_main("0","led3/");
-					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("เปิดไฟเรียบร้อย")).Do(); err != nil {
+					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("ปลั๊ก 2 หยุดทำงานแล้ว")).Do(); err != nil {
 						log.Print(err)
 					}
 				}else{
-					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("sssss")).Do(); err != nil {
+					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("ไม่ถูกต้อง")).Do(); err != nil {
 						log.Print(err)
 					}
 				}
