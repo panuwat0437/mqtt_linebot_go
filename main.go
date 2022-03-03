@@ -24,8 +24,10 @@ var connectLostHandler mqtt.ConnectionLostHandler = func(client mqtt.Client, err
 
 func main() {
 	bot, err := linebot.New(
-		"8bc8046e16935612025956c76fef6841",
-		"ZyGRZ4Ztm1YKbAKhzL7HkQOcSKGjAqyZnJk/dXEvvsIMjhpnaifYlXu4MchzJaLIR2G8/+wXyDNEPzi+k29hnG9iIXuPS8McaC08yiXz+9XGxH6Yf1seAcnWnDG+KQPu8E01yj4QAreJaPUGZOcQWgdB04t89/1O/w1cDnyilFU=",
+		os.Getenv("LINEBOT_CHANNEL_SECRET"),
+		os.Getenv("LINEBOT_CHANNEL_TOKEN"),
+		// "a73b62d06a29b77d3b57b3d3b0aa0e7b",
+		// "VhC7qpsC9Op/QN1MDc61EGAN5Jqiq2fl5RlyzGZjVJr0CnZE7gs2G52HOt9pWPEzFYvY74eRqzC939lWERLSxYZk1uaFMSQpy0v92hjZfVvyFoOX9VzMSAULznGrP5sa5wE+viP8gkG2d939jxiV3QdB04t89/1O/w1cDnyilFU=",
 	  )
 	  if err != nil {
 		log.Fatal(err)
